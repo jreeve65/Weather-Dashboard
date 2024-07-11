@@ -3,6 +3,7 @@ const searchInput = document.getElementById("searchInput")
 const searchButton = document.getElementById("searchButton");
 const storedCities = JSON.parse(localStorage.getItem('cities')) || [];
 const container = document.getElementById('container');
+const forcastContainer = document.getElementById('forcast');
 const btnContainer = document.getElementById('buttons');
 function getData(city) {
     
@@ -32,22 +33,51 @@ function getInputCity(){
 }
 
 function renderCurrentWeather(city, weather) {
+    let day = new Date();
+    // let dayName =['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
     container.innerHTML="";
+    console.log(weather);
+    
     const temp = weather.list[0].main.temp;
     const wind = weather.list[0].wind.speed;
     const humid = weather.list[0].main.humidity
     const icon = weather.list[0].weather[0].icon;
     const iconUrl = `https://openweathermap.org/img/wn/${icon}.png`;
+    const currentDayh1 = document.createElement('h1');
     const tempH1 = document.createElement('h1');
     const windH1 = document.createElement('h1');
     const humidH1 = document.createElement('h1');
     const iconImg = document.createElement('img');
+    currentDayh1.textContent ="Today";
     tempH1.textContent = temp;
     windH1.textContent = wind;
     iconImg.setAttribute("src", iconUrl);
     humidH1.textContent = humid;
-    container.append(iconImg, tempH1, windH1, humidH1);
-    // createHistoryButton();
+    container.append(currentDayh1,iconImg, tempH1, windH1, humidH1);
+    forcastContainer.innerHTML="";
+    for (let i = 1; i < 7; i++) {
+        day = Date(weather.list[i].dt);
+        console.log(day);
+        
+        let forcastTemp = weather.list[i].main.temp;
+        let forcastWind = weather.list[i].wind.speed;
+        let forcastHumid = weather.list[i].main.humidity
+        let forcastIcon = weather.list[i].weather[0].icon;
+        let forcastIconUrl =`https://openweathermap.org/img/wn/${forcastIcon}.png`;
+        let forcastDayDisplay = document.createElement('h1');
+        let forcastTempDisplay = document.createElement('h1');
+        let forcastWindDisplay = document.createElement('h1');
+        let forcastHumidDisplay = document.createElement('h1');
+        let forcastIconImg = document.createElement('img');
+        forcastDayDisplay.textContent = `${i} Day out`;
+        forcastTempDisplay.textContent= `Temp: ${forcastTemp}`;
+        forcastWindDisplay.textContent = `Wind: ${forcastWind}`;
+        forcastHumidDisplay.textContent = `Humidity: ${forcastHumid}`;
+        forcastIconImg.setAttribute("src",forcastIconUrl);
+        forcastContainer.append(forcastIconImg,forcastDayDisplay,forcastTempDisplay,forcastWindDisplay,forcastHumidDisplay);
+        
+    }
+    
 
 
 
