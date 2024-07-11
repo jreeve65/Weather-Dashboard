@@ -7,7 +7,7 @@ const forcastContainer = document.getElementById('forcast');
 const btnContainer = document.getElementById('buttons');
 function getData(city) {
     
-    const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API}`;
+    const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API}&units=imperial`;
     console.log(apiUrl);
     fetch(apiUrl)
         .then(function (response) {
@@ -49,10 +49,10 @@ function renderCurrentWeather(city, weather) {
     const humidH1 = document.createElement('h1');
     const iconImg = document.createElement('img');
     currentDayh1.textContent ="Today";
-    tempH1.textContent = temp;
-    windH1.textContent = wind;
+    tempH1.textContent = `Temp: ${temp} F`;
+    windH1.textContent = `Wind: ${wind}`;
     iconImg.setAttribute("src", iconUrl);
-    humidH1.textContent = humid;
+    humidH1.textContent = `Humiditiy: ${humid}`;
     container.append(currentDayh1,iconImg, tempH1, windH1, humidH1);
     forcastContainer.innerHTML="";
     for (let i = 1; i < 7; i++) {
@@ -70,7 +70,7 @@ function renderCurrentWeather(city, weather) {
         let forcastHumidDisplay = document.createElement('h1');
         let forcastIconImg = document.createElement('img');
         forcastDayDisplay.textContent = `${i} Day out`;
-        forcastTempDisplay.textContent= `Temp: ${forcastTemp}`;
+        forcastTempDisplay.textContent= `Temp: ${forcastTemp} F`;
         forcastWindDisplay.textContent = `Wind: ${forcastWind}`;
         forcastHumidDisplay.textContent = `Humidity: ${forcastHumid}`;
         forcastIconImg.setAttribute("src",forcastIconUrl);
