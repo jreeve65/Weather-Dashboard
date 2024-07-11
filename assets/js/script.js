@@ -4,8 +4,8 @@ const searchButton = document.getElementById("searchButton");
 const storedCities = JSON.parse(localStorage.getItem('cities')) || [];
 const container = document.getElementById('container');
 const btnContainer = document.getElementById('buttons');
-function getData() {
-    let city = searchInput.value.trim();
+function getData(city) {
+    
     const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API}`;
     console.log(apiUrl);
     fetch(apiUrl)
@@ -15,7 +15,7 @@ function getData() {
         })
         .then(function (data) {
             renderCurrentWeather(city, data);
-            storeSearchHistory(city);
+           
 
         })
         .catch(function (error) {
@@ -23,6 +23,12 @@ function getData() {
         });
 
 
+}
+function getInputCity(){
+    let city = searchInput.value.trim();
+    storeSearchHistory(city);
+    createHistoryButton();
+    getData(city);
 }
 
 function renderCurrentWeather(city, weather) {
@@ -40,7 +46,7 @@ function renderCurrentWeather(city, weather) {
     iconImg.setAttribute("src", iconUrl);
     humidH1.textContent = humid;
     container.append(iconImg, tempH1, windH1, humidH1);
-    createHistoryButton();
+    // createHistoryButton();
 
 
 
@@ -53,6 +59,7 @@ function storeSearchHistory(city) {
 function createHistoryButton() {
     const thisStoredCity = JSON.parse(localStorage.getItem('cities'));
     if (thisStoredCity) {
+        btnContainer.innerHTML='';
         for (let i = 0; i < thisStoredCity.length; i++) {
             const newButton = document.createElement('button');
             newButton.classList.add('historybtn')
@@ -75,6 +82,6 @@ function handleSearchHistory(e) {
 createHistoryButton();
 btnContainer.addEventListener('click', handleSearchHistory);
 
-searchButton.addEventListener('click', getData);
+searchButton.addEventListener('click', getInputCity);
 
 
