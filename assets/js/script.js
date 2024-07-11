@@ -32,6 +32,7 @@ function getInputCity(){
 }
 
 function renderCurrentWeather(city, weather) {
+    container.innerHTML="";
     const temp = weather.list[0].main.temp;
     const wind = weather.list[0].wind.speed;
     const humid = weather.list[0].main.humidity
