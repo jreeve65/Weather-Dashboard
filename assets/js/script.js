@@ -58,7 +58,8 @@ function renderCurrentWeather(city, weather) {
     for (let i = 1; i < 7; i++) {
         day = Date(weather.list[i].dt);
         console.log(day);
-        
+        let forcastCard = document.createElement('section');
+        forcastCard.setAttribute('class','card');        
         let forcastTemp = weather.list[i].main.temp;
         let forcastWind = weather.list[i].wind.speed;
         let forcastHumid = weather.list[i].main.humidity
@@ -74,7 +75,8 @@ function renderCurrentWeather(city, weather) {
         forcastWindDisplay.textContent = `Wind: ${forcastWind}`;
         forcastHumidDisplay.textContent = `Humidity: ${forcastHumid}`;
         forcastIconImg.setAttribute("src",forcastIconUrl);
-        forcastContainer.append(forcastIconImg,forcastDayDisplay,forcastTempDisplay,forcastWindDisplay,forcastHumidDisplay);
+        forcastCard.append(forcastDayDisplay,forcastIconImg,forcastTempDisplay,forcastWindDisplay,forcastHumidDisplay);
+        forcastContainer.append(forcastCard);
         
     }
     
