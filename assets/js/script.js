@@ -33,10 +33,11 @@ function getInputCity(){
 }
 
 function renderCurrentWeather(city, weather) {
+    console.log(weather);
     let day = new Date();
     // let dayName =['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
     container.innerHTML="";
-        
+    const cityName = weather.city.name;    
     const temp = weather.list[0].main.temp;
     const wind = weather.list[0].wind.speed;
     const humid = weather.list[0].main.humidity
@@ -47,12 +48,14 @@ function renderCurrentWeather(city, weather) {
     const windH1 = document.createElement('h2');
     const humidH1 = document.createElement('h2');
     const iconImg = document.createElement('img');
+    const cityH1 = document.createElement('h1');
+    cityH1.textContent = cityName;
     currentDayh1.textContent ="Today";
     tempH1.textContent = `Temp: ${temp} F`;
     windH1.textContent = `Wind: ${wind}`;
     iconImg.setAttribute("src", iconUrl);
     humidH1.textContent = `Humiditiy: ${humid}`;
-    container.append(currentDayh1,iconImg, tempH1, windH1, humidH1);
+    container.append(cityH1,currentDayh1,iconImg, tempH1, windH1, humidH1);
     forcastContainer.innerHTML="";
     for (let i = 1; i < 7; i++) {
         day = Date(weather.list[i].dt);
