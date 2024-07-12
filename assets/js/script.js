@@ -8,7 +8,7 @@ const btnContainer = document.getElementById('buttons');
 function getData(city) {
     
     const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API}&units=imperial`;
-    console.log(apiUrl);
+    
     fetch(apiUrl)
         .then(function (response) {
             return response.json();
