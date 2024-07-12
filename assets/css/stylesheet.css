@@ -76,6 +76,7 @@ label h3{
     margin: 10px;
 }
 #forcast{
+    background-color: whitesmoke;
     position: relative;
     top: -50px;
     left:600px;
