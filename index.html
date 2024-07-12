@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,14 +8,22 @@
     <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="./assets/css/stylesheet.css">
 </head>
+
 <body>
-    <header><h1>Let's Talk about Weather</h1></header>
-    <label for="search-bar"><h3>Enter a City</h3></label>
-    <input type="text" id="searchInput">    
+    <header>
+        <h1>Let's Talk About Weather</h1>
+    </header>
+    <label for="search-bar">
+        <h3>Enter a City</h3>
+    </label>
+    <input type="text" id="searchInput">
     <button type="submit" id="searchButton">Submit</button>
+    <section class="search-history-title"><h1>Search History</h1></section>
     <div class="search-history" id="buttons"></div>
-    <div id="container"></div>    
+
+    <div id="container" class="current-weather"></div>
     <div id="forcast"></div>
     <script src="./assets/js/script.js"></script>
 </body>
+
 </html>
