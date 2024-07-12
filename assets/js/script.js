@@ -33,7 +33,6 @@ function getInputCity(){
 }
 
 function renderCurrentWeather(city, weather) {
-    console.log(weather);
     let day = new Date();
     // let dayName =['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
     container.innerHTML="";
