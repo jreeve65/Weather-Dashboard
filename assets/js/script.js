@@ -56,7 +56,6 @@ function renderCurrentWeather(city, weather) {
     forcastContainer.innerHTML="";
     for (let i = 1; i < 7; i++) {
         day = Date(weather.list[i].dt);
-        console.log(day);
         let forcastCard = document.createElement('section');
         forcastCard.setAttribute('class','card');        
         let forcastTemp = weather.list[i].main.temp;
