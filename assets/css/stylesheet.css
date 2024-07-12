@@ -12,6 +12,9 @@ header{
     color: whitesmoke;
     margin-bottom: 30px;
 }
+label{
+    display: inline-block
+}
 label h3{
     font-size: xx-large;
 }
@@ -36,4 +39,23 @@ label h3{
 .historybtn{
     width: 100px;
     margin:5px;
+}
+.current-weather{
+    display: inline-flex;
+    length: 500px;
+    padding:60px;
+    width: 1000px;
+    flex-direction: column;
+    align-items: flex-start;
+    border:solid black;
+    margin-left: 100px;
+    background-color: blue;
+    color: white;
+}
+.current-weather h1{
+    font-size: xx-large;
+}
+.current-weather h2{
+    font-size: x-large;
+    margin-bottom: 15px;
 }

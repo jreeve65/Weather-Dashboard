@@ -43,9 +43,9 @@ function renderCurrentWeather(city, weather) {
     const icon = weather.list[0].weather[0].icon;
     const iconUrl = `https://openweathermap.org/img/wn/${icon}.png`;
     const currentDayh1 = document.createElement('h1');
-    const tempH1 = document.createElement('h1');
-    const windH1 = document.createElement('h1');
-    const humidH1 = document.createElement('h1');
+    const tempH1 = document.createElement('h2');
+    const windH1 = document.createElement('h2');
+    const humidH1 = document.createElement('h2');
     const iconImg = document.createElement('img');
     currentDayh1.textContent ="Today";
     tempH1.textContent = `Temp: ${temp} F`;
